@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model List<AçmaRapor>
+<div class="container">
+    <div class="row pt-4 pb-3">
+        <div class="col-6">
+            <h2 class="text-primary">
+                Rapor Listesi
+            </h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Rapor" asp-action="Upsert" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Yeni Rapor Ekle
+            </a>
+        </div>
+    </div>
+
+
+
+    <table id="tblData" class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Rapor ID</th>
+                <th>Rapor Tarih</th>
+                <th>Açma Sorumlusu</th>
+                <th>Açılış Kotu</th>
+                <th>Kapanış Kotu</th>
+                <th>Açma</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+        </tbody>
+
+    </table>
+
+</div>
+
+@section Scripts{
+    <script src="~/js/Rapor.js"></script>
+}

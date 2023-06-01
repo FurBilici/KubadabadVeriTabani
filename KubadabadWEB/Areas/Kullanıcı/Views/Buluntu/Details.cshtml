@@ -1,0 +1,66 @@
+﻿@model Buluntular
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="col-12 text-center">
+    <h2 class="text-black text-uppercase">@Model.AçmaListesi.AçmaAdı Açması - @Model.BuluntuTürü</h2>
+</div>
+
+<div class="card-body">
+    <div class="row">
+        <div class="col-6 ">
+            <a asp-action="Index" class="btn btn-outline-primary bg-gradient mb-5 fw-semibold text-dark">
+                <small>Listeye Geri Dön</small>
+            </a>
+        </div>
+    </div>
+    <div  class="row">
+        <div class="col-6">
+            <div class="sketchfab-embed-wrapper"> <iframe title="Vadagiai (Lithuania)" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="@Model.ÜçBoyut?autospin=0&autostart=1&ui_theme=dark"> </iframe> </div>
+        </div>
+        <div class="col-6">
+                <div class="row ps-2">
+                    <h4 class="text-dark">Buluntu Türü: @Model.BuluntuTürü</h4>
+                    <hr />
+                </div>
+                <div class="row ps-2">
+                    <h4 class="text-dark">Buluntu Tarihi: @Model.BuluntuTarih</h4>
+                    <hr />
+                </div>
+                <div class="row ps-2">
+                    <h4 class="text-dark">Buluntu Dönemi: @Model.Evre</h4>
+                    <hr />
+                </div>
+                <div class="row ps-2">
+                    <h4 class="text-dark">Buluntu Kotu: @Model.BuluntuKotu</h4>
+                    <hr />
+                </div>
+                <div class="row ps-2">
+                    <h4 class="text-dark">X ve Y Koordinatları: @Model.XveY</h4>
+                    <hr />
+                </div>
+                <div class="row ps-2">
+                    <h4 class="text-dark">Buluntu Malzeme: @Model.Malzeme</h4>
+                    <hr />
+                </div>
+                <div class="row ps-2">
+                    <h4 class="text-dark">Buluntu Durumu: @Model.BuluntuDurumu</h4>
+                    <hr />
+                </div>
+                <div class="row ps-2">
+                    <h4 class="text-dark">
+                        Buluntu Envanterlik Mi?:  @if (Model.Envanterlik == true)
+                        {
+                            <label class="text-dark">Envanterlik</label>
+                        }
+                        else
+                        {
+                            <label class="text-dark">Etütlük</label>
+                        }
+                    </h4>
+                    <hr />
+                </div>
+        </div>
+    </div>
+</div>

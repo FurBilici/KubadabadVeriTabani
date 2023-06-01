@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewData["Title"] = "Upsert";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model Kubadabad.Models.ViewModels.RaporVM
+
+<h2>Rapor @(Model.AçmaRapor.RaporId != 0 ? "Güncelle" : "Ekle")</h2>
+<form method="post">
+    <input asp-for="AçmaRapor.RaporId" hidden />
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <hr />
+        </div>
+        <div class="mb-3 row p-1">
+            <label class="p-0">Rapor</label>
+            <textarea asp-for="AçmaRapor.RaporDetay" class="form-control"></textarea>
+        </div>
+        <div class="mb-3 row p-1">
+            <label class="p-0">Rapor Tarih</label>
+            <input type="date" asp-for="AçmaRapor.RaporTarih" class="form-control" />
+        </div>
+        <div class="mb-3 row p-1">
+            <label class="p-0">Açma Sorumlusu</label>
+            <input asp-for="AçmaRapor.RaporYazar" class="form-control" />
+        </div>
+        <div class="mb-3 row p-1">
+            <label class="p-0">Açılış Kotu</label>
+            <input asp-for="AçmaRapor.AçılışKotu" class="form-control" />
+        </div>
+        <div class="mb-3 row p-1">
+            <label class="p-0">Kapanış Kotu</label>
+            <input asp-for="AçmaRapor.KapanışKotu" class="form-control" />
+        </div>
+        <div class="mb-3 row p-1">
+            <label class="p-0">3D Adresi</label>
+            <input asp-for="AçmaRapor.AçmaÜçBoyut" class="form-control" />
+        </div>
+        <div class="mb-3 row p-1">
+            <label class="p-0">Rapor Açma Adı</label>
+            <select asp-for="AçmaRapor.AçmaListesiID" asp-items="@Model.AçmaList" class="form-control">
+                <option disabled selected>--Açma Seçin--</option>
+            </select>
+        </div>
+        <div class="row">
+            <div class="col-6 col-mid-3">
+                @if (Model.AçmaRapor.RaporId != 0)
+                {
+                    <button type="submit" class="btn btn-primary form-control">Güncelle</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-primary form-control">Ekle</button>
+                }
+
+            </div>
+            <div class="col-6 col-mid-3">
+                <a asp-controller="Rapor" asp-action="Index" class="btn btn-outline-secondary form-control">
+                    Listeye Geri Dön
+                </a>
+            </div>
+        </div>
+
+
+    </div>
+
+</form>
+
+@section Scripts{
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'anchor autolink charmap codesample emoticons   lists   table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough  | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+            mergetags_list: [
+                { value: 'First.Name', title: 'First Name' },
+                { value: 'Email', title: 'Email' },
+            ]
+        });
+    </script>
+}

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace KubadabadVT.Models.ViewModels
+namespace Kubadabad.Models.ViewModels
 {
     public class RaporVM
     {

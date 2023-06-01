@@ -1,0 +1,95 @@
+﻿@{
+    ViewData["Title"] = "Upsert";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model Kubadabad.Models.ViewModels.BuluntuVM
+
+<h2>Buluntu @(Model.Buluntular.BuluntuId != 0 ? "Güncelle" : "Ekle")</h2>
+<form method="post">
+    <input asp-for="Buluntular.BuluntuId" hidden />
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <hr />
+        </div>
+        <div class="mb-3 row p-1">
+            <label class="p-0">Buluntu Türü</label>
+            <input asp-for="Buluntular.BuluntuTürü" class="form-control" />
+        </div>
+        <div class="mb-3 row p-1">
+            <label class="p-0">Buluntu Tarih</label>
+            <input type="date" asp-for="Buluntular.BuluntuTarih" class="form-control" />
+        </div>
+        <div class="mb-3 row p-1">
+            <label class="p-0">Buluntu Dönemi</label>
+            <input asp-for="Buluntular.Evre" class="form-control" />
+        </div>
+        <div class="mb-3 row p-1">
+            <label class="p-0">Buluntu Kotu</label>
+            <input asp-for="Buluntular.BuluntuKotu" class="form-control" />
+        </div>
+        <div class="mb-3 row p-1">
+            <label class="p-0">X-Y Koordinatları</label>
+            <input asp-for="Buluntular.XveY" class="form-control" />
+        </div>
+        <div class="mb-3 row p-1">
+            <label class="p-0">Malzeme</label>
+            <input asp-for="Buluntular.Malzeme" class="form-control" />
+        </div>
+        <div class="mb-3 row p-1">
+            <label class="p-0">Buluntu Durumu</label>
+            <input asp-for="Buluntular.BuluntuDurumu" class="form-control" />
+        </div>
+        <div class="mb-3 row p-1">
+            <label class="p-0">Buluntu Envanterlik Mi?</label>
+            <input asp-for="Buluntular.Envanterlik" />
+        </div>
+        <div class="mb-3 row p-1">
+            <label class="p-0">3D Adresi</label>
+            <input asp-for="Buluntular.ÜçBoyut" class="form-control" />
+        </div>
+        <div class="mb-3 row p-1">
+            <label class="p-0">Buluntu Açma Adı</label>
+            <select asp-for="Buluntular.AçmaListesiID" asp-items="@Model.AçmaList" class="form-control">
+                <option disabled selected>--Açma Seçin--</option>
+            </select>
+        </div>
+        <div class="row">
+            <div class="col-6 col-mid-3">
+                @if (Model.Buluntular.BuluntuId != 0)
+                {
+                    <button type="submit" class="btn btn-primary form-control">Güncelle</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-primary form-control">Ekle</button>
+                }
+
+            </div>
+            <div class="col-6 col-mid-3">
+                <a asp-controller="Buluntu" asp-action="Index" class="btn btn-outline-secondary form-control">
+                    Listeye Geri Dön
+                </a>
+            </div>
+        </div>
+
+
+    </div>
+
+</form>
+
+@section Scripts{
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'anchor autolink charmap codesample emoticons   lists   table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough  | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+            mergetags_list: [
+                { value: 'First.Name', title: 'First Name' },
+                { value: 'Email', title: 'Email' },
+            ]
+        });
+    </script>
+}
